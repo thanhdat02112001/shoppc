@@ -18,16 +18,18 @@ use Whoops\Run;
 Route::get('/', function () {
     return view('frontend.home');
 });
+
 Route::get('/products',function(){
     return view('frontend.product');
 });
+
 Route::get('/cart',function(){
     return view('frontend.cart');
 });
+
 Route::get('/checkout',function(){
     return view('frontend.checkout');
 });
-
 //backend
 Route::group(['prefix' => "/admin"], function () {
     Route::get('/', function(){
@@ -46,14 +48,13 @@ Route::group(['prefix' => "/admin"], function () {
         Route::get('/', [ProductController::class, 'index']);
         Route::get('/addProduct', [ProductController::class, "add"])->name("addProduct");
     });
-
-
+    
     Route::get('/order', function(){
         return view('backend.order');
     });
+    
     Route::get('/listuser', function(){
         return view('backend.listuser');
     });
-
 });
 
